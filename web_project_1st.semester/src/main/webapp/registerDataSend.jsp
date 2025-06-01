@@ -27,7 +27,7 @@ request.setCharacterEncoding("UTF-8");
 	
 	int count = sm.executeUpdate(sql);
 	if(count == 1){
-		out.println("회원 가입 성공");
+		response.sendRedirect("start_page.jsp");
 	}
 	else{
 		out.println("회원 가입 실패");

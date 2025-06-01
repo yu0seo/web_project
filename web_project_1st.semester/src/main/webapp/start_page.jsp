@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
-<style>
+<!-- <style>
   .center-container {
     display: flex;
     justify-content: center;
@@ -35,12 +35,13 @@
     margin: 5px;
     padding: 16px 30px;
   }
-</style>
+</style> -->
 </head>
 <body>
-  <div class="center-container">
-  <div class="logo-text">8조(유영서, 박사원)</div>
-  <div class="logo-text">간단한 퀴즈 랭킹 홈페이지</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div align = "center">
+  <div>8조(유영서, 박사원)</div>
+  <div>간단한 퀴즈 랭킹 홈페이지</div>
     <form class="option-form" action="handle_option.jsp" method="post">
       <button type="submit" name="option" value="login">로그인</button>
       <button type="submit" name="option" value="register">회원가입</button>
