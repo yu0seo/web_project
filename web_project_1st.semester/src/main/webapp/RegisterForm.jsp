@@ -31,15 +31,16 @@ Home > 회원가입
 	<hr>
 	<legend>비밀번호를 찾을 때 사용할 질문입니다.</legend><br>
 	본인이 졸업한 초등학교 이름은 ? : <input type = "text" name = "question" placeholder = "한국초등학교">
-</fieldset>
-</form>
-</div>
+
+
 
 <div align = "center">
 <br>
 <input type = "submit" value = "회원가입">&nbsp;&nbsp;
 <input type = "reset" value = "다시작성">
 </div>
-
+</fieldset>
+</form>
+</div>
 </body>
 </html>

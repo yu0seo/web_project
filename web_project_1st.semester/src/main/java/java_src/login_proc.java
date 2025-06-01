@@ -7,45 +7,45 @@ public class login_proc {
 	private String birth;   
 	private String question; 
 	
-    public String getID(){
-        return id;
-    }
-    public void setID(String id){
-        this.id = id;
-    }
+	public String getId() {
+	    return id;
+	}
+	public void setId(String id) {
+	    this.id = id;
+	}
 
-    public String getPWD(){
-        return pwd;
-    }
-    public void setPWD(String pwd){
-        this.pwd = pwd;
-    }
-    
-    public String getNAME(){
-        return name;
-    }
-    public void setNAME(String name){
-        this.name = name;
-    }
+	public String getPwd() {
+	    return pwd;
+	}
+	public void setPwd(String pwd) {
+	    this.pwd = pwd;
+	}
 
-    public String getEMAIL(){
-        return email;
-    }
-    public void setEMAIL(String email){
-        this.email = email;
-    }
-    
-    public String getBIRTH() {
-    	return birth;
-    }
-    public void setBIRTH(String birth) {
-    	this.birth = birth;
-    }
-    
-    public String getQUESTION() {
-    	return question;
-    }
-    public void setQUESTION(String question) {
-    	this.question = question;
-    }
+	public String getName() {
+	    return name;
+	}
+	public void setName(String name) {
+	    this.name = name;
+	}
+
+	public String getEmail() {
+	    return email;
+	}
+	public void setEmail(String email) {
+	    this.email = email;
+	}
+
+	public String getBirth() {
+	    return birth;
+	}
+	public void setBirth(String birth) {
+	    this.birth = birth;
+	}
+
+	public String getQuestion() {
+	    return question;
+	}
+	public void setQuestion(String question) {
+	    this.question = question;
+	}
 }
