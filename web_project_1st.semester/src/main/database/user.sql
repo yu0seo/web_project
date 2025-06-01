@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS members(
 	birthday DATE NOT NULL,
 	email VARCHAR(255) UNIQUE NOT NULL,
 	score VARCHAR(255)
-	);
+	)
