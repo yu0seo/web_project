@@ -4,17 +4,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login_page</title>
+<title>로그인</title>
 <style>
-
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 </style>
 </head>
 <body>
-	<form class="login_form" action="login_process.jsp" method="post">
-	
-
-
-</form>
-
+  <div class="center-container">
+    <h2>로그인</h2>
+    <form action="login_process.jsp" method="post">
+      <div>
+        아이디
+        <input type="text" name="id" required placeholder="아이디 입력">
+      </div>
+      <br>
+      <div>
+        비밀번호
+        <input type="password" name="pwd" required placeholder="비밀번호 입력">
+      </div>
+      <br>
+      <button type="submit">로그인</button>
+    </form>
+  </div>
 </body>
 </html>
