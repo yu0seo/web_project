@@ -1,51 +1,51 @@
 package java_src;
 public class login_proc {
-	private String userID;
-	private String userPW;
-	private String userNAME;
-	private String userMAIL;
-	private String userBIRTH;
-	private String userQST;
+	private String id;      
+	private String pwd;     
+	private String name;    
+	private String email;   
+	private String birth;   
+	private String question; 
 	
-    public String getUserID(){
-        return userID;
+    public String getID(){
+        return id;
     }
-    public void setUserID(String userID){
-        this.userID = userID;
-    }
-
-    public String getUserPW(){
-        return userPW;
-    }
-    public void setUserPW(String userPW){
-        this.userPW = userPW;
-    }
-    
-    public String getUserNAME(){
-        return userNAME;
-    }
-    public void setUserNAME(String userNAME){
-        this.userNAME = userNAME;
+    public void setID(String id){
+        this.id = id;
     }
 
-    public String getUserMAIL(){
-        return userMAIL;
+    public String getPWD(){
+        return pwd;
     }
-    public void setUserMAIL(String userMAIL){
-        this.userMAIL = userMAIL;
-    }
-    
-    public String getUserBIRTH() {
-    	return userBIRTH;
-    }
-    public void setUserBIRTH(String userBIRTH) {
-    	this.userBIRTH = userBIRTH;
+    public void setPWD(String pwd){
+        this.pwd = pwd;
     }
     
-    public String getUserQST() {
-    	return userQST;
+    public String getNAME(){
+        return name;
     }
-    public void setUserQST(String userQST) {
-    	this.userQST = userQST;
+    public void setNAME(String name){
+        this.name = name;
+    }
+
+    public String getEMAIL(){
+        return email;
+    }
+    public void setEMAIL(String email){
+        this.email = email;
+    }
+    
+    public String getBIRTH() {
+    	return birth;
+    }
+    public void setBIRTH(String birth) {
+    	this.birth = birth;
+    }
+    
+    public String getQUESTION() {
+    	return question;
+    }
+    public void setQUESTION(String question) {
+    	this.question = question;
     }
 }
