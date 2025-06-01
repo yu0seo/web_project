@@ -5,18 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<style>
-  .center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-</style>
 </head>
 <body>
-  <div class="center-container">
+  <div align = "center">
+  	<br><br><br><br><br><br><br><br>
     <h2>로그인</h2>
     <form action="login_process.jsp" method="post">
       <div>
