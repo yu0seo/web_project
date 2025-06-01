@@ -5,6 +5,45 @@ function inputCheck() {
 //	console.log("입력된 비밀번호:", document.regForm.pwd.value);
 //	console.log("정규식 검사 결과:", pwdRegex.test(document.regForm.pwd.value));
 
+
+	//아이디 유효성 검사
+	if (document.regForm.id.value == "") {
+	    alert("아이디를 입력해 주세요");
+	    document.regForm.id.focus();
+	    return false;
+	}
+	if (!idRegex.test(document.regForm.id.value)){
+		alert("아이디는 4~16자의 영문자와 숫자를 포함해야 합니다.");
+		document.regForm.id.focus();
+		return false;
+	}
+
+	//비밀번호 유효성 검사
+	if (document.regForm.pwd.value == "") {
+	    alert("비밀번호를 입력해 주세요");
+	    document.regForm.pwd.focus();
+	    return false;
+	}
+	if (!pwdRegex.test(document.regForm.pwd.value)) {
+	    alert("비밀번호는 4~16자의 영문자와 숫자를 포함해야 합니다.");
+	    document.regForm.pwd.focus();
+	    return false;
+	}
+
+	if (document.regForm.repwd.value == "") {
+	    alert("비밀번호 재입력을 입력해 주세요");
+	    document.regForm.repwd.focus();
+	    return false;
+	}
+	if (document.regForm.pwd.value !== document.regForm.repwd.value) {
+	    alert("비밀번호가 일치하지 않습니다");
+	    document.regForm.repwd.focus();
+	    return false;
+	}
+
+	
+	
+	
 	//이름 유효성 검사
 	if (document.regForm.name.value == "") {
 	    alert("이름을 입력해 주세요");
@@ -19,13 +58,6 @@ function inputCheck() {
     }
 
 	
-	//아이디 유효성 검사
-    if (document.regForm.id.value == "") {
-        alert("아이디를 입력해 주세요");
-        document.regForm.id.focus();
-        return false;
-    }
-	if (!idRegex.test(document.regForm.id.value))
 
 		
 		
@@ -38,28 +70,7 @@ function inputCheck() {
 	
 	
 	
-	//비밀번호 유효성 검사
-	if (document.regForm.pwd.value == "") {
-	    alert("비밀번호를 입력해 주세요");
-	    document.regForm.pwd.focus();
-	    return false;
-	}
-    if (!pwdRegex.test(document.regForm.pwd.value)) {
-        alert("비밀번호는 4~16자의 영문자와 숫자를 포함해야 합니다.");
-        document.regForm.pwd.focus();
-        return false;
-    }
 
-	if (document.regForm.repwd.value == "") {
-	    alert("비밀번호 재입력을 입력해 주세요");
-	    document.regForm.repwd.focus();
-	    return false;
-	}
-    if (document.regForm.pwd.value !== document.regForm.repwd.value) {
-        alert("비밀번호가 일치하지 않습니다");
-        document.regForm.repwd.focus();
-        return false;
-    }
 	
 	//이메일
 	if (document.regForm.email.value == "") {

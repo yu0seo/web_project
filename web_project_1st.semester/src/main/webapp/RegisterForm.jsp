@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@ Home > 회원가입 폼 화면
 <hr>
 <div align = "center">
 <form name = "regForm" method = "post" action = "Check.jsp" onsubmit = "return inputCheck()">
-<fieldset style = "width:500px">
+<fieldset style="width:500px">
 <legend>회원가입</legend>
 
 	아이디 : <input type = "text" name = "id">
@@ -27,6 +26,8 @@ Home > 회원가입 폼 화면
 	<h6>이메일 작성</h6>
 	생년월일 : <input type = "date" name = "birth">
 	<h6>생년월일 작성</h6>
+</fieldset>
+</form>
 </div>
 
 <div align = "center">
@@ -34,7 +35,6 @@ Home > 회원가입 폼 화면
 <input type = "submit" value = "회원가입">&nbsp;&nbsp;
 <input type = "reset" value = "다시작성">
 </div>
-</fieldset>
-</form>
+
 </body>
 </html>
