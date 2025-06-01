@@ -14,7 +14,7 @@
 <body>
 HOME > 회원가입 > 회원가입 입력 정보 확인
 <div align = "center">
-<form name = "regForm" method = "post" action = "dataSend.jsp">
+<form name = "regForm" method = "post" action = "registerDataSend.jsp">
 <fieldset style="width:500px">
 <legend align = "center">회원가입 입력 정보 확인</legend>
 	<br>
@@ -34,7 +34,7 @@ HOME > 회원가입 > 회원가입 입력 정보 확인
     <input type="hidden" name="id" value="<jsp:getProperty name='regBean' property='id' />" />
     <input type="hidden" name="pwd" value="<jsp:getProperty name='regBean' property='pwd' />" />
     <input type="hidden" name="name" value="<jsp:getProperty name='regBean' property='name' />" />
-    <input type="hidden" name="birthday" value="<jsp:getProperty name='regBean' property='birth' />" />
+    <input type="hidden" name="birth" value="<jsp:getProperty name='regBean' property='birth' />" />
     <input type="hidden" name="email" value="<jsp:getProperty name='regBean' property='email' />" />
     <input type="hidden" name="question" value="<jsp:getProperty name = "regBean" property ="question"/>" />
 <div align = "center">
