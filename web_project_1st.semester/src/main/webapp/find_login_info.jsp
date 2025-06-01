@@ -5,8 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>find ID/PW</title>
+<style>	
+
+</style>
 </head>
 <body>
-
+	<form action="login_process.jsp" method="post">
+	
+	</form>
 </body>
 </html>
