@@ -39,7 +39,7 @@
 </head>
 <body>
   <div class="center-container">
-  <div class="logo-text">14조(유영서, 박사원)</div>
+  <div class="logo-text">8조(유영서, 박사원)</div>
   <div class="logo-text">간단한 퀴즈 랭킹 홈페이지</div>
     <form class="option-form" action="handle_option.jsp" method="post">
       <button type="submit" name="option" value="login">로그인</button>
