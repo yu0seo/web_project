@@ -26,6 +26,11 @@ Home > 회원가입 폼 화면
 	<h6>이메일 작성</h6>
 	생년월일 : <input type = "date" name = "birth">
 	<h6>생년월일 작성</h6>
+	
+	<hr>
+	비밀번호를 찾을 때 사용할 질문입니다.<br>
+	본인이 졸업한 초등학교 이름은 ? : <input type = "text" name = "question">
+	<h6>질문 답변 작성</h6>
 </fieldset>
 </form>
 </div>
