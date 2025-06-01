@@ -7,10 +7,11 @@
 <script src = "registerValidation.js"></script>
 </head>
 <body>
-Home > 회원가입 폼 화면 
+Home > 회원가입 
 <hr>
+<br><br>
 <div align = "center">
-<form name = "regForm" method = "post" action = "Check.jsp" onsubmit = "return inputCheck()">
+<form name = "regForm" method = "post" action = "registerInfoCheck.jsp" onsubmit = "return inputCheck()">
 <fieldset style="width:500px">
 <legend>회원가입</legend>
 
