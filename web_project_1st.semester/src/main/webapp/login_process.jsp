@@ -35,7 +35,7 @@
 	
 	        rs = pstmt.executeQuery();
 	
-	        if (rs.next()) {
+	        if (rs.next()) { 
 	%>
 				<script>            
 	            alert("로그인 성공!");
