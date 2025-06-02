@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<jsp:useBean id="login_Bean" class="java_src.login_proc"/>
+<jsp:useBean id="login_Bean" class="java_src.login_proc" scope="session"/>
+<!-- 자바빈즈 scope 값을 session으로 주어 자바빈즈 값을 session에 담아서 같이 보냄
+즉 자바빈즈 값의 살아있는 범위를 session으로 지정함 -->
 <jsp:setProperty name="login_Bean" property="*"/>
 <%
 	String id = login_Bean.getId();
@@ -10,7 +12,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = ""; 
+	String password = "123456"; 
 
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -24,6 +26,10 @@
 </head>
 <body>
 <% 
+if ("root".equals(id) && "root1234".equals(pwd)){
+	session.setAttribute("login_Bean", login_Bean);
+	response.sendRedirect("login_success.jsp");
+} else{
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 	        conn = DriverManager.getConnection(url, username, password);
@@ -68,6 +74,7 @@
 	        try { if (pstmt != null) pstmt.close(); } catch (Exception e) {}
 	        try { if (conn != null) conn.close(); } catch (Exception e) {}
 	    }
+}
 %>
 </body>
 </html>

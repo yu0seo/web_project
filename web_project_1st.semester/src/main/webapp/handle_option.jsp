@@ -16,6 +16,8 @@
 			response.sendRedirect("find_login_info.jsp");
 		} else if("login".equals(option)){
 			response.sendRedirect("login.jsp");
+		} else if("my_info".equals(option)){
+			response.sendRedirect("my_info.jsp");
 		}
 	%>
 </body>

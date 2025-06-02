@@ -6,15 +6,14 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root"; 
-	String password = "";
+	String password = "123456";
 	Connection conn = null;
 
 	Class.forName(driverName);
 	conn = DriverManager.getConnection(url, username, password);
 	
 	Statement sm = conn.createStatement();
-	ResultSet rs = sm.executeQuery("SELECT id, name, birthday, email, question, score FROM members");
-	
+	ResultSet rs = sm.executeQuery("SELECT id, name, birthday, email, question, score FROM members");	
 %>
 <html>
 <head>
@@ -24,7 +23,7 @@
 <body>
 	<div align="center">
 	<br>
-	<font size=7>관리자 기능</font><br>
+	<font size=6>회원 정보</font><br>
 	<table border="1" width="1000" cellspacing="0" cellpadding="3">
 	<tr>
 		<th>순서</th>

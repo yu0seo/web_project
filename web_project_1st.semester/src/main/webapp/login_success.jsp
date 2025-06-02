@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id = "login_Bean" class = "java_src.login_proc"/>
+<jsp:useBean id = "login_Bean" class = "java_src.login_proc" scope="session"/>
+<!-- scope="session"을 통해login_process.jsp에서 자바빈즈 값을 세션이 담아 받아 옴 -->
 <jsp:setProperty name = "login_Bean" property = "*" />
 <!DOCTYPE html>
 <html>
@@ -10,11 +11,33 @@
 </head>
 <body>
 <div align="right">
-<br>
-
+<table>
+  <tr>
+<% 
+	String user_id = login_Bean.getId();
+	String user_pwd = login_Bean.getPwd();
+	if ("root".equals(user_id) && "root1234".equals(user_pwd)){
+%>
+  <td>
+	<form action="admin_page.jsp" method="post">
+	  <div>
+	    <button type="submit" style="width: 150px; height: 50px;">관리자 메뉴로 이동</button>
+	  </div>
+	</form>
+  </td>
+<%	
+	}
+%>
+  <td>
+	<form action="handle_option.jsp" method="post">
+	    <button type="submit" name="option" value="my_info" style="width: 150px; height: 50px;">내 정보</button>
+	</form>
+  </td>
+  </tr>
+ </table>
 </div>
 <div align = "center">
-  	<br><br><br><br><br><br><br><br><br><br>
+  	<br><br><br><br><br><br><br><br>
     <form action="quiz_option.jsp" method="post">
     <font size=7>암산 Quiz</font>
       <div>
