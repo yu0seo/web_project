@@ -10,7 +10,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = "123456"; 
+	String password = ""; 
 
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -41,6 +41,9 @@
 	            alert("로그인 성공!");
 	            <%
 				response.sendRedirect("login_success.jsp");
+	            session.setAttribute("userId", id);
+	            //퀴즈에서 점수 입력 위해 만든 세션
+
 				%>
 	            </script>
 	<%

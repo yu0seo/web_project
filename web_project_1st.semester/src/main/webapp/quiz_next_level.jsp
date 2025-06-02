@@ -44,27 +44,20 @@
         conn = DriverManager.getConnection(url, username, password);
 
         // 회원 점수 조회
-        String selectSql = "SELECT score FROM members WHERE user_id = ?";
+        String selectSql = "SELECT score FROM members WHERE id = ?";
         pstmt = conn.prepareStatement(selectSql);
         pstmt.setString(1, userId); //세션값을 가져온 것
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            int currentScore = rs.getInt("total_score");
+            int currentScore = rs.getInt("score");
             int newScore = currentScore + earnedScore;
 
             // 점수 업데이트
-            String updateSql = "UPDATE score SET total_score = ? WHERE user_id = ?";
+            String updateSql = "UPDATE members SET score = ? WHERE id = ?";
             pstmt = conn.prepareStatement(updateSql);
             pstmt.setInt(1, newScore);
             pstmt.setString(2, userId);
-            pstmt.executeUpdate();
-        } else {
-            // 신규 회원 점수 저장
-            String insertSql = "INSERT INTO score (user_id, total_score) VALUES (?, ?)";
-            pstmt = conn.prepareStatement(insertSql);
-            pstmt.setString(1, userId);
-            pstmt.setInt(2, earnedScore);
             pstmt.executeUpdate();
         }
     } catch(Exception e) {
