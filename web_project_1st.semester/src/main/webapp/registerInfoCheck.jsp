@@ -3,8 +3,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id = "regBean" class = "java_src.login_proc"/>
-<jsp:setProperty name = "regBean" property = "*" />
+<jsp:useBean id = "login_Bean" class = "java_src.login_proc"/>
+<jsp:setProperty name = "login_Bean" property = "*" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,24 +19,24 @@ HOME > 회원가입 > 회원가입 입력 정보 확인
 <legend align = "center">회원가입 입력 정보 확인</legend>
 	<br>
 	아이디 : <br>
-	<jsp:getProperty name = "regBean" property ="id"/><br><br>
+	<jsp:getProperty name = "login_Bean" property ="id"/><br><br>
 	비밀번호 : <br>
-	<jsp:getProperty name = "regBean" property ="pwd"/><br><br>
+	<jsp:getProperty name = "login_Bean" property ="pwd"/><br><br>
 	이름 : <br>
-	<jsp:getProperty name = "regBean" property ="name"/><br><br>
+	<jsp:getProperty name = "login_Bean" property ="name"/><br><br>
 	이메일 : <br>
-	<jsp:getProperty name = "regBean" property ="email"/><br><br>
+	<jsp:getProperty name = "login_Bean" property ="email"/><br><br>
 	생년월일 : <br>
-	<jsp:getProperty name = "regBean" property ="birth"/><br><br>
-	본인이 졸업한 초등학교 이름은 ? : 	<jsp:getProperty name = "regBean" property ="question"/>
+	<jsp:getProperty name = "login_Bean" property ="birth"/><br><br>
+	본인이 졸업한 초등학교 이름은 ? : 	<jsp:getProperty name = "login_Bean" property ="question"/>
 </fieldset>
     <!-- hidden으로 값을 다시 넘겨줌 -->
-    <input type="hidden" name="id" value="<jsp:getProperty name='regBean' property='id' />" />
-    <input type="hidden" name="pwd" value="<jsp:getProperty name='regBean' property='pwd' />" />
-    <input type="hidden" name="name" value="<jsp:getProperty name='regBean' property='name' />" />
-    <input type="hidden" name="birth" value="<jsp:getProperty name='regBean' property='birth' />" />
-    <input type="hidden" name="email" value="<jsp:getProperty name='regBean' property='email' />" />
-    <input type="hidden" name="question" value="<jsp:getProperty name = "regBean" property ="question"/>" />
+    <input type="hidden" name="id" value="<jsp:getProperty name='login_Bean' property='id' />" />
+    <input type="hidden" name="pwd" value="<jsp:getProperty name='login_Bean' property='pwd' />" />
+    <input type="hidden" name="name" value="<jsp:getProperty name='login_Bean' property='name' />" />
+    <input type="hidden" name="birth" value="<jsp:getProperty name='login_Bean' property='birth' />" />
+    <input type="hidden" name="email" value="<jsp:getProperty name='login_Bean' property='email' />" />
+    <input type="hidden" name="question" value="<jsp:getProperty name = "login_Bean" property ="question"/>" />
 <div align = "center">
 <br>
 <h4>회원가입 정보를 확인하신 후, 이상이 없으면 [회원가입]버튼을 눌러주세요.</h4>

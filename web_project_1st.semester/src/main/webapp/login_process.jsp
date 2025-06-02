@@ -10,7 +10,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = "";
+	String password = "123456";
 
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -23,19 +23,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-// 1. 관리자 로그인 처리 (조건문으로 처리)
-if ("root".equals(id) && "root1234".equals(pwd)) {
-%>
-<script>
-    alert("관리자 로그인 성공!");
-    <%
-    response.sendRedirect("admin_page.jsp"); // 관리자 전용 페이지
-%>
-    </script>
-<%
-} 
-else{
+<% 
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 	        conn = DriverManager.getConnection(url, username, password);
@@ -52,8 +40,7 @@ else{
 				<script>            
 	            alert("로그인 성공!");
 	            <%
-	            session.setAttribute("userId", id);
-				response.sendRedirect("quiz_page.jsp");
+				response.sendRedirect("login_success.jsp");
 				%>
 	            </script>
 	<%
@@ -78,7 +65,6 @@ else{
 	        try { if (pstmt != null) pstmt.close(); } catch (Exception e) {}
 	        try { if (conn != null) conn.close(); } catch (Exception e) {}
 	    }
-}
 %>
 </body>
 </html>
