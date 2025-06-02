@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <%
     double correctAnswer = Double.parseDouble(request.getParameter("correctAnswer"));
     double userAnswer = Double.parseDouble(request.getParameter("userAnswer"));
@@ -20,6 +21,59 @@
     if (totalScore == null) totalScore = 0;
     totalScore += earnedScore;
     session.setAttribute("totalScore", totalScore);
+    
+    
+    //sql에 데이터 넣기
+    String driverName = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/user";
+	String username = "root";
+	String password = "";
+	Connection conn = null;
+	
+	Class.forName(driverName);
+	conn = DriverManager.getConnection(url,username,password);
+	Statement sm = conn.createStatement();
+    
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    try {
+        Class.forName(driverName);
+        conn = DriverManager.getConnection(url, username, password);
+
+        // 회원 점수 조회
+        String selectSql = "SELECT total_score FROM user_scores WHERE user_id = ?";
+        pstmt = conn.prepareStatement(selectSql);
+        pstmt.setString(1, userId);
+        //userId는 세션으로 넘겨야함 세션은 로그인에서 만들 예정 6/2일
+        rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int currentScore = rs.getInt("total_score");
+            int newScore = currentScore + earnedScore;
+
+            // 점수 업데이트
+            String updateSql = "UPDATE user_scores SET total_score = ? WHERE user_id = ?";
+            pstmt = conn.prepareStatement(updateSql);
+            pstmt.setInt(1, newScore);
+            pstmt.setString(2, userId);
+            pstmt.executeUpdate();
+        } else {
+            // 신규 회원 점수 저장
+            String insertSql = "INSERT INTO user_scores(user_id, total_score) VALUES (?, ?)";
+            pstmt = conn.prepareStatement(insertSql);
+            pstmt.setString(1, userId);
+            pstmt.setInt(2, earnedScore);
+            pstmt.executeUpdate();
+        }
+    } catch(Exception e) {
+        e.printStackTrace();
+    } finally {
+        if(rs != null) try { rs.close(); } catch(Exception e) {}
+        if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}
+        if(conn != null) try { conn.close(); } catch(Exception e) {}
+    }
+%>
 %>
 <!DOCTYPE html>
 <html>
