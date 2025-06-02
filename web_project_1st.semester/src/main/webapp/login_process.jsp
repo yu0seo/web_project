@@ -10,7 +10,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = "123456";
+	String password = "";
 
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -24,45 +24,60 @@
 </head>
 <body>
 <%
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        conn = DriverManager.getConnection(url, username, password);
-
-        String sql = "SELECT * FROM members WHERE id = ? AND pwd = ?";
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, id);
-        pstmt.setString(2, pwd);
-
-        rs = pstmt.executeQuery();
-
-        if (rs.next()) {
+// 1. 관리자 로그인 처리 (조건문으로 처리)
+if ("root".equals(id) && "root1234".equals(pwd)) {
 %>
-			<script>            
-            alert("로그인 성공!");
-			location.href = "quize_page.jsp";
-			</script>
-<%
-        } else {
+<script>
+    alert("관리자 로그인 성공!");
+    <%
+    response.sendRedirect("admin_page.jsp"); // 관리자 전용 페이지
 %>
-            <script>
-                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-                history.back();
-            </script>
+    </script>
 <%
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-%>
-        <script>
-            alert("에러 발생: <%= e.getMessage() %>");
-            history.back();
-        </script>
-<%
-    } finally {
-        try { if (rs != null) rs.close(); } catch (Exception e) {}
-        try { if (pstmt != null) pstmt.close(); } catch (Exception e) {}
-        try { if (conn != null) conn.close(); } catch (Exception e) {}
-    }
+} 
+else{
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        conn = DriverManager.getConnection(url, username, password);
+	
+	        String sql = "SELECT * FROM members WHERE id = ? AND pwd = ?";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, id);
+	        pstmt.setString(2, pwd);
+	
+	        rs = pstmt.executeQuery();
+	
+	        if (rs.next()) {
+	%>
+				<script>            
+	            alert("로그인 성공!");
+	            <%
+				response.sendRedirect("quize_page.jsp");
+				%>
+	            </script>
+	<%
+	        } else {
+	%>
+	            <script>
+	                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+	                history.back();
+	            </script>
+	<%
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	%>
+	        <script>
+	            alert("에러 발생: <%= e.getMessage() %>");
+	            history.back();
+	        </script>
+	<%
+	    } finally {
+	        try { if (rs != null) rs.close(); } catch (Exception e) {}
+	        try { if (pstmt != null) pstmt.close(); } catch (Exception e) {}
+	        try { if (conn != null) conn.close(); } catch (Exception e) {}
+	    }
+}
 %>
 </body>
 </html>
