@@ -52,6 +52,7 @@ else{
 				<script>            
 	            alert("로그인 성공!");
 	            <%
+	            session.setAttribute("userId", id);
 				response.sendRedirect("quiz_page.jsp");
 				%>
 	            </script>

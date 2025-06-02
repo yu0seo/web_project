@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%
+	String userId = (String) session.getAttribute("userId");
+
     double correctAnswer = Double.parseDouble(request.getParameter("correctAnswer"));
     double userAnswer = Double.parseDouble(request.getParameter("userAnswer"));
     int step = Integer.parseInt(request.getParameter("step"));
@@ -42,10 +44,9 @@
         conn = DriverManager.getConnection(url, username, password);
 
         // 회원 점수 조회
-        String selectSql = "SELECT total_score FROM user_scores WHERE user_id = ?";
+        String selectSql = "SELECT score FROM members WHERE user_id = ?";
         pstmt = conn.prepareStatement(selectSql);
-        pstmt.setString(1, userId);
-        //userId는 세션으로 넘겨야함 세션은 로그인에서 만들 예정 6/2일
+        pstmt.setString(1, userId); //세션값을 가져온 것
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
@@ -53,14 +54,14 @@
             int newScore = currentScore + earnedScore;
 
             // 점수 업데이트
-            String updateSql = "UPDATE user_scores SET total_score = ? WHERE user_id = ?";
+            String updateSql = "UPDATE score SET total_score = ? WHERE user_id = ?";
             pstmt = conn.prepareStatement(updateSql);
             pstmt.setInt(1, newScore);
             pstmt.setString(2, userId);
             pstmt.executeUpdate();
         } else {
             // 신규 회원 점수 저장
-            String insertSql = "INSERT INTO user_scores(user_id, total_score) VALUES (?, ?)";
+            String insertSql = "INSERT INTO score (user_id, total_score) VALUES (?, ?)";
             pstmt = conn.prepareStatement(insertSql);
             pstmt.setString(1, userId);
             pstmt.setInt(2, earnedScore);
@@ -73,7 +74,6 @@
         if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}
         if(conn != null) try { conn.close(); } catch(Exception e) {}
     }
-%>
 %>
 <!DOCTYPE html>
 <html>

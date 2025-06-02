@@ -28,6 +28,7 @@
     <title>문제 <%= step %></title>
 </head>
 <body>
+<div align = "center">
     <h2>문제 <%= step %>:</h2>
     <p><%= num1 %> <%= operator %> <%= num2 %> = ?</p>
 
@@ -37,5 +38,6 @@
         <input type="text" name="userAnswer" required>
         <input type="submit" value="제출">
     </form>
+    </div>
 </body>
 </html>
