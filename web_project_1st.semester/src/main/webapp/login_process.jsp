@@ -52,7 +52,7 @@ else{
 				<script>            
 	            alert("로그인 성공!");
 	            <%
-				response.sendRedirect("quize_page.jsp");
+				response.sendRedirect("quiz_page.jsp");
 				%>
 	            </script>
 	<%
