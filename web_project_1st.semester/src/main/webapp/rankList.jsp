@@ -70,7 +70,7 @@
         </table>
         <br>
         <form action="login_success.jsp" method="post">
-            <button type="submit">뒤로가기</button>
+            <button type="submit">처음 화면으로 돌아가기</button>
         </form>
     </div>
 </body>

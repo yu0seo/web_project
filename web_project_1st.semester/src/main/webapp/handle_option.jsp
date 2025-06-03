@@ -25,6 +25,8 @@
 			response.sendRedirect("logout.jsp");
 		} else if("find_pwd".equals(option)){
 			response.sendRedirect("find_pwd.jsp");
+		} else if("go_to_start".equals(option)){
+			response.sendRedirect("start_page.jsp");
 		} else if ("reGame".equals(quiz_option)){
 			session.setAttribute("totalScore", 0);  // 점수 초기화
 			response.sendRedirect("login_success.jsp");
