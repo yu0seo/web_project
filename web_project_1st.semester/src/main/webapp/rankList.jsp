@@ -1,5 +1,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:useBean id = "login_Bean" class = "java_src.login_proc" scope="session"/>
+<jsp:setProperty name = "login_Bean" property = "*" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +11,13 @@
 <body>
     <div align="center">
         <h2>점수 순위</h2>
+        <h6>상위 10명만 노출됩니다</h6>
         <table border="1" cellspacing = "0" cellpadding="10">
             <tr>
                 <th>순위</th>
                 <th>아이디</th>
                 <th>점수</th>
+                <th></th>
             </tr>
 <%
     String driverName = "com.mysql.jdbc.Driver";
@@ -29,7 +33,7 @@
         Class.forName(driverName);
         conn = DriverManager.getConnection(url, username, password);
 
-        String sql = "SELECT id, score FROM members ORDER BY score DESC";
+        String sql = "SELECT id, score FROM members ORDER BY score DESC LIMIT 10";
         pstmt = conn.prepareStatement(sql);
         rs = pstmt.executeQuery();
 
@@ -37,12 +41,22 @@
         while (rs.next()) {
             String id = rs.getString("id");
             int score = rs.getInt("score");
+            String user_id = login_Bean.getId();
 %>
-            <tr>
-                <td><%= rank++ %></td>
-                <td><%= id %></td>
-                <td><%= score %></td>
-            </tr>
+<tr>
+    <td><%= rank++ %></td>
+    <td><%= id %></td>
+    <td><%= score %></td>
+    <td>
+        <%
+            if (user_id != null && user_id.equals(id)) {
+
+                
+            %>
+            내 아이디</td>
+            <% }
+        %>
+</tr>
 <%
         }
     } catch (Exception e) {
