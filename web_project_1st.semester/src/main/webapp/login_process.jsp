@@ -12,7 +12,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = "123456"; 
+	String password = ""; 
 
     Connection conn = null;
     PreparedStatement pstmt = null;
