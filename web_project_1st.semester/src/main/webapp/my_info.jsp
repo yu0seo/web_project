@@ -10,7 +10,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root"; 
-	String password = "123456";
+	String password = "";
 	Connection conn = null;
 
 	Class.forName(driverName);
@@ -20,6 +20,8 @@
 	ResultSet rs = sm.executeQuery("SELECT id, name, birthday, email, question, score FROM members WHERE id = '" + user_id + "'");
 	
 %>
+
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -39,20 +41,18 @@
 		<p>이메일: <%= rs.getString("email") %></p>
 		<p>보안질문: <%= rs.getString("question") %></p>
 		<p>점수: <%= rs.getInt("score") %></p>
-		<form action="del_proc.jsp" method="post">
-		  <button type="submit" name="quiz_option" value="reGame" style="width: 150px; height: 50px;">회원 탈퇴</button>
-		</form>
+		
 <%
 	} else {
 %>
 		<p>사용자 정보를 찾을 수 없습니다.</p>
-</fieldset>
-</div>
 <%
 	}
 	if (rs != null) rs.close();
 	if (sm != null) sm.close();
 	if (conn != null) conn.close();
-%>	
+%>
+</fieldset>
+</div>	
 <body>
 </html>

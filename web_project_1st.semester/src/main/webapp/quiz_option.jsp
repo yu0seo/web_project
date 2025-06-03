@@ -14,7 +14,7 @@
 			session.setAttribute("totalScore", 0);  // 점수 초기화
 			response.sendRedirect("login_success.jsp");
 		} else if("checkRank".equals(quiz_option)){
-			response.sendRedirect("checkRank.jsp");
+			response.sendRedirect("rankList.jsp");
 		}
 		else if("startQuiz".equals(quiz_option)){
 			session.setAttribute("totalScore", 0);  // 점수 초기화
