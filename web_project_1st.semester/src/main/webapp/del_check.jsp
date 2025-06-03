@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ page import="java.sql.*" %>
 <jsp:useBean id="login_Bean" class="java_src.login_proc" scope="session" />
-<jsp:setProperty name="login_Bean" property="*" />
-
 
 
 <%
