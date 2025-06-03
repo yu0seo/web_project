@@ -40,32 +40,33 @@
     ResultSet rs = null;
 
     try {
-        Class.forName(driverName);
+        Class.forName("com.mysql.jdbc.Driver");
         conn = DriverManager.getConnection(url, username, password);
 
-        // 회원 점수 조회
+        // 기존 점수 조회
         String selectSql = "SELECT score FROM members WHERE id = ?";
         pstmt = conn.prepareStatement(selectSql);
-        pstmt.setString(1, userId); //세션값을 가져온 것
+        pstmt.setString(1, userId);
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
             int currentScore = rs.getInt("score");
-            int newScore = currentScore + earnedScore;
 
-            // 점수 업데이트
-            String updateSql = "UPDATE members SET score = ? WHERE id = ?";
-            pstmt = conn.prepareStatement(updateSql);
-            pstmt.setInt(1, newScore);
-            pstmt.setString(2, userId);
-            pstmt.executeUpdate();
+            if (totalScore > currentScore) {
+                // 더 높은 점수면 업데이트
+                String updateSql = "UPDATE members SET score = ? WHERE id = ?";
+                pstmt = conn.prepareStatement(updateSql);
+                pstmt.setInt(1, totalScore);
+                pstmt.setString(2, userId);
+                pstmt.executeUpdate();
+            }
         }
-    } catch(Exception e) {
+    } catch (Exception e) {
         e.printStackTrace();
     } finally {
-        if(rs != null) try { rs.close(); } catch(Exception e) {}
-        if(pstmt != null) try { pstmt.close(); } catch(Exception e) {}
-        if(conn != null) try { conn.close(); } catch(Exception e) {}
+        if (rs != null) try { rs.close(); } catch (Exception e) {}
+        if (pstmt != null) try { pstmt.close(); } catch (Exception e) {}
+        if (conn != null) try { conn.close(); } catch (Exception e) {}
     }
 %>
 <!DOCTYPE html>
