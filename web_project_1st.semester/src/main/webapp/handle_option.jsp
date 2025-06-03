@@ -22,6 +22,20 @@
 			response.sendRedirect("del_proc.jsp");
 		} else if("logout".equals(option)){
 			response.sendRedirect("logout.jsp");
+		} else if("find_pwd".equals(option)){
+			response.sendRedirect("find_pwd.jsp");
+		}
+		
+		String quiz_option = request.getParameter("quiz_option");
+		
+		if ("reGame".equals(quiz_option)){
+			session.setAttribute("totalScore", 0);  // 점수 초기화
+			response.sendRedirect("login_success.jsp");
+		} else if("checkRank".equals(quiz_option)){
+			response.sendRedirect("rankList.jsp");
+		} else if("startQuiz".equals(quiz_option)){
+			session.setAttribute("totalScore", 0);  // 점수 초기화
+			response.sendRedirect("quiz_page.jsp");
 		}
 %>
 
