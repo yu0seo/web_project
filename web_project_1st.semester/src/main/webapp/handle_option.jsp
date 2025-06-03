@@ -7,7 +7,7 @@
 <title>handle_option</title>
 </head>
 <body>
-	<%
+<%
 		String option = request.getParameter("option");
 	
 		if ("register".equals(option)){
@@ -18,7 +18,9 @@
 			response.sendRedirect("login.jsp");
 		} else if("my_info".equals(option)){
 			response.sendRedirect("my_info.jsp");
+		} else if("del_check".equals(option)){
+			response.sendRedirect("del_check.jsp");
 		}
-	%>
+%>
 </body>
 </html>

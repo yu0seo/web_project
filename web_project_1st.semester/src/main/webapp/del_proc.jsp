@@ -23,36 +23,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 탈퇴</title>
 </head>
 <body>
 <div align="center">
-<br><br><br><br><br><br><br>
-<fieldset style="width:500px">
-<legend>내 정보</legend>
-<%
-	if (rs.next()) {
-%>
-		<p>ID: <%= rs.getString("id") %></p>
-		<p>이름: <%= rs.getString("name") %></p>
-		<p>생일: <%= rs.getString("birthday") %></p>
-		<p>이메일: <%= rs.getString("email") %></p>
-		<p>보안질문: <%= rs.getString("question") %></p>
-		<p>점수: <%= rs.getInt("score") %></p>
-		<form action="del_proc.jsp" method="post">
-		  <button type="submit" name="quiz_option" value="reGame" style="width: 150px; height: 50px;">회원 탈퇴</button>
-		</form>
-<%
-	} else {
-%>
-		<p>사용자 정보를 찾을 수 없습니다.</p>
+<br><br><br><br><br><br><br><br>
+<font size=5> 정말로 회원 탈퇴를 원하시면 아이디와 비밀번호를 입력해주세요.</font>
+<br><br>
+<fieldset style="width:400px">
+<br>
+	<form action="handle_option.jsp" method="post">
+	아이디
+    <input type="text" name="id" required placeholder="아이디 입력">
+    <br><br>
+    비밀번호
+    <input type="password" name="pwd" required placeholder="비밀번호 입력">
+    <br><br>
+    <button type="submit" name="option" value="del_check">회원 탈퇴</button>
+    </form>
+    <form action="handle_option.jsp" method="post">
+    <button type="submit" name="option" value="my_info">취소 하기</button>
+    </form>
 </fieldset>
 </div>
-<%
-	}
-	if (rs != null) rs.close();
-	if (sm != null) sm.close();
-	if (conn != null) conn.close();
-%>	
-<body>
+
+</body>
 </html>
