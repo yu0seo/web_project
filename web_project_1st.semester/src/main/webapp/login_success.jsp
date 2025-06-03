@@ -31,6 +31,7 @@
   <td>
 	<form action="handle_option.jsp" method="post">
 	    <button type="submit" name="option" value="my_info" style="width: 150px; height: 50px;">내 정보</button>
+	    <button type="submit" name="option" value="logout" style="width: 150px; height: 50px;">로그아웃</button>
 	</form>
   </td>
   </tr>
