@@ -3,24 +3,26 @@
 <jsp:useBean id="login_Bean" class="java_src.login_proc" scope="session" />
 <jsp:setProperty name="login_Bean" property="*" />
 
+
+
 <%
     request.setCharacterEncoding("UTF-8");
     String inputId = request.getParameter("id");
-    String inputPw = request.getParameter("pw");
+    String inputPw = request.getParameter("pwd");
 
     String sessionId = login_Bean.getId();
-
+    
     String driverName = "com.mysql.cj.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/user";
     String username = "root";
-    String password = "";
+    String password = "123456";
     Connection conn = null;
 
     Class.forName(driverName);
     conn = DriverManager.getConnection(url, username, password);
 
     Statement sm = conn.createStatement();
-    String query = "SELECT * FROM members WHERE id = '" + inputId + "' AND pw = '" + inputPw + "'";
+    String query = "SELECT * FROM members WHERE id = '" + inputId + "' AND pwd = '" + inputPw + "'";
     ResultSet rs = sm.executeQuery(query);
 
     if (rs.next()) {
@@ -33,7 +35,7 @@
 %>
                 <script>
                     alert("회원 삭제가 완료되었습니다.");
-                    location.href = "logout.jsp";
+<%response.sendRedirect("start_page.jsp");%>
                 </script>
 <%
             } else {
@@ -60,7 +62,6 @@
         </script>
 <%
     }
-
     rs.close();
     sm.close();
     conn.close();

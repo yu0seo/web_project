@@ -18,11 +18,12 @@
 			response.sendRedirect("login.jsp");
 		} else if("my_info".equals(option)){
 			response.sendRedirect("my_info.jsp");
-		} else if("del_check".equals(option)){
-			response.sendRedirect("del_check.jsp");
+		} else if("del_proc".equals(option)){
+			response.sendRedirect("del_proc.jsp");
 		} else if("logout".equals(option)){
 			response.sendRedirect("logout.jsp");
 		}
 %>
+
 </body>
 </html>

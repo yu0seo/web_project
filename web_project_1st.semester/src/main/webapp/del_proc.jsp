@@ -32,18 +32,16 @@
 <br><br>
 <fieldset style="width:400px">
 <br>
-	<form action="handle_option.jsp" method="post">
+	<form action="del_check.jsp" method="post">
 	아이디
-    <input type="text" name="id" required placeholder="아이디 입력">
+    <input type="text" name="id" placeholder="아이디 입력">
     <br><br>
     비밀번호
-    <input type="password" name="pwd" required placeholder="비밀번호 입력">
+    <input type="password" name="pwd" placeholder="비밀번호 입력">
     <br><br>
-    <button type="submit" name="option" value="del_check">회원 탈퇴</button>
-    </form>
-    <form action="handle_option.jsp" method="post">
-    <button type="submit" name="option" value="my_info">취소 하기</button>
-    </form>
+    <button type="submit">회원 탈퇴</button>
+    <button type="button" onclick="history.back()" >취소 하기</button>
+  	</form>
 </fieldset>
 </div>
 

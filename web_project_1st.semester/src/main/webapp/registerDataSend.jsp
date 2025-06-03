@@ -20,7 +20,7 @@
 	String driverName = "com.mysql.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root";
-	String password = "";
+	String password = "123456";
 	Connection conn = null;
 	
 	Class.forName(driverName);

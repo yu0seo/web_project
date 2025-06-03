@@ -10,7 +10,7 @@
 	String driverName = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root"; 
-	String password = "";
+	String password = "123456";
 	Connection conn = null;
 
 	Class.forName(driverName);
@@ -41,7 +41,10 @@
 		<p>이메일: <%= rs.getString("email") %></p>
 		<p>보안질문: <%= rs.getString("question") %></p>
 		<p>점수: <%= rs.getInt("score") %></p>
-		
+		<form action="handle_option.jsp" method="post">
+    		<button type="submit" name="option" value="del_proc">회원 탈퇴</button>
+    		<button type="button" onclick="history.back()">뒤로 가기</button>
+    	</form>
 <%
 	} else {
 %>
