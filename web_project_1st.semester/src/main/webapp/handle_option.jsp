@@ -13,7 +13,7 @@
 		if ("register".equals(option)){
 			response.sendRedirect("RegisterForm.jsp");
 		} else if("find_login_info".equals(option)){
-			response.sendRedirect("find_login_info.jsp");
+			response.sendRedirect("find_pwd.jsp");
 		} else if("login".equals(option)){
 			response.sendRedirect("login.jsp");
 		} else if("my_info".equals(option)){

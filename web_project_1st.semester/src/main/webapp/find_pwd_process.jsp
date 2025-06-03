@@ -4,7 +4,7 @@
     request.setCharacterEncoding("UTF-8");
 
     String name = request.getParameter("name");
-    String email = request.getParameter("email");
+    String id = request.getParameter("id");
     String question = request.getParameter("question");
 
     String driver = "com.mysql.cj.jdbc.Driver";
@@ -20,20 +20,20 @@
         Class.forName(driver);
         conn = DriverManager.getConnection(url, dbUser, dbPass);
 
-        String sql = "SELECT id FROM members WHERE name = ? AND email = ?";
+        String sql = "SELECT pwd FROM members WHERE name = ? AND id = ? AND question = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, name);
-        pstmt.setString(2, email);
-
+        pstmt.setString(2, id);
+        pstmt.setString(3, question);
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            String found = rs.getString("id");
+            String found = rs.getString("pwd");
 %>
             <script>
-              alert("당신의 아이디는: '<%= found %>' 입니다.");
-            </script>
+              alert("당신의 비밀번호는: '<%= found %>' 입니다.");
               <%response.sendRedirect("login.jsp"); %>
+            </script>
 <%
         } else {
 %>
