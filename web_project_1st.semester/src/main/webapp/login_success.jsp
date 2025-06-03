@@ -41,7 +41,7 @@
     <form action="quiz_option.jsp" method="post">
     <font size=7>암산 Quiz</font>
       <div>
-        <button type="submit" name="quiz_option" value="reGame" style="width: 150px; height: 50px;">게임시작</button>
+        <button type="submit" name="quiz_option" value="startQuiz" style="width: 150px; height: 50px;">게임시작</button>
         <button type="submit" name="quiz_option" value="checkRank"style="width: 150px; height: 50px;">순위확인</button>
       </div>
     </form>
