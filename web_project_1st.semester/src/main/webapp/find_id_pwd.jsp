@@ -38,7 +38,7 @@
 %>
 <div align = "center">
 			당신의 아이디는 <h3><%=found %></h3>입니다.
-			<form action="handle_option" method="post">
+			<form action="handle_option.jsp" method="post">
 				<button type="submit" name="option" value="login">로그인 하기</button>
 				<button type="submit" name="option" value="find_pwd">비밀번호 찾기</button>
 			</form>
@@ -66,9 +66,9 @@
 %>
 <div align = "center">
 			당신의 비밀번호는 <h3><%=found %></h3>입니다.
-			<form action="handle_option" method="post">
-				<button type="submit" name="option" value="login">로그인 하기</button>
-			</form>
+			<form class="option-form" action="handle_option.jsp" method="post">
+      			<button type="submit" name="option" value="login">로그인 하기</button>
+    		</form>
 </div>
 <%
             } else {

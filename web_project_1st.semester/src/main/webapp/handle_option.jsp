@@ -9,7 +9,8 @@
 <body>
 <%
 		String option = request.getParameter("option");
-	
+		String quiz_option = request.getParameter("quiz_option");
+
 		if ("register".equals(option)){
 			response.sendRedirect("RegisterForm.jsp");
 		} else if("find_login_info".equals(option)){
@@ -24,11 +25,7 @@
 			response.sendRedirect("logout.jsp");
 		} else if("find_pwd".equals(option)){
 			response.sendRedirect("find_pwd.jsp");
-		}
-		
-		String quiz_option = request.getParameter("quiz_option");
-		
-		if ("reGame".equals(quiz_option)){
+		} else if ("reGame".equals(quiz_option)){
 			session.setAttribute("totalScore", 0);  // 점수 초기화
 			response.sendRedirect("login_success.jsp");
 		} else if("checkRank".equals(quiz_option)){
