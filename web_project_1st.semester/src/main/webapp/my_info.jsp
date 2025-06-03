@@ -19,6 +19,22 @@
 	Statement sm = conn.createStatement();
 	ResultSet rs = sm.executeQuery("SELECT id, name, birthday, email, question, score FROM members WHERE id = '" + user_id + "'");
 	
+	Statement ranksm = conn.createStatement(); //나의 현재 순위를 확인하기 위해서 
+	ResultSet rankRs = ranksm.executeQuery("SELECT id FROM members ORDER BY score DESC"); //사용하는 코드들
+	
+	int myRank = 0;
+	int currentRank = 1;
+	
+	while (rankRs.next()) {
+	    String currentId = rankRs.getString("id");
+	    if (user_id.equals(currentId)) {
+	        myRank = currentRank;
+	        break;
+	    }
+	    currentRank++;
+	}
+
+
 %>
 
 
@@ -41,6 +57,7 @@
 		<p>이메일: <%= rs.getString("email") %></p>
 		<p>보안질문: <%= rs.getString("question") %></p>
 		<p>점수: <%= rs.getInt("score") %></p>
+		<p>나의 순위: <%= myRank%>
 		<form action="handle_option.jsp" method="post">
     		<button type="submit" name="option" value="del_proc">회원 탈퇴</button>
     		<button type="button" onclick="history.back()">뒤로 가기</button>
@@ -54,6 +71,11 @@
 	if (rs != null) rs.close();
 	if (sm != null) sm.close();
 	if (conn != null) conn.close();
+	
+	rankRs.close();
+	ranksm.close();
+	conn.close();
+	
 %>
 </fieldset>
 </div>	
