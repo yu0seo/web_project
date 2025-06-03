@@ -20,6 +20,8 @@
 			response.sendRedirect("my_info.jsp");
 		} else if("del_check".equals(option)){
 			response.sendRedirect("del_check.jsp");
+		} else if("logout".equals(option)){
+			response.sendRedirect("logout.jsp");
 		}
 %>
 </body>
