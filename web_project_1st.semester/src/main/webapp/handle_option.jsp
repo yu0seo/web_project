@@ -25,6 +25,9 @@
 			response.sendRedirect("logout.jsp");
 		} else if("find_pwd".equals(option)){
 			response.sendRedirect("find_pwd.jsp");
+		}
+		  else if("find_id".equals(option)){
+			response.sendRedirect("find_id.jsp");			
 		} else if("go_to_start".equals(option)){
 			response.sendRedirect("start_page.jsp");
 		} else if ("reGame".equals(quiz_option)){
