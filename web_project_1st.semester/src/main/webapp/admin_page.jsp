@@ -61,7 +61,7 @@
 	</table>
 	<br><br>
 	<form action="" method="post">
-		<button type="button" onclick="history.back()">뒤로 가기</button>
+		<button type="submit" formaction="login_success.jsp" >취소 하기</button>
 	</form>
 	</div>
 </body>
