@@ -7,19 +7,31 @@
 	String url = "jdbc:mysql://localhost:3306/user";
 	String username = "root"; 
 	String password = "";
-	String sortOrder = request.getParameter("sort");
 
+	String sortOrder = request.getParameter("sort");
 	if (sortOrder == null || (!sortOrder.equals("asc") && !sortOrder.equals("desc"))) {
-		sortOrder = "desc";  // 기본은 점수 높은 순
+		sortOrder = "";  //데이터베이스에 데이터가 들어간 순서
 	}
+
+	String searchId = request.getParameter("search");
+	if (searchId == null) searchId = "";
 
 	Connection conn = null;
 	Class.forName(driverName);
 	conn = DriverManager.getConnection(url, username, password);  
 
-	Statement sm = conn.createStatement();
-	String sql = "SELECT id, name, birthday, email, question, score FROM members ORDER BY score " + sortOrder.toUpperCase();
-	ResultSet rs = sm.executeQuery(sql); 
+	// SQL 쿼리 작성
+	String sql = "SELECT id, name, birthday, email, question, score FROM members";
+	if (!searchId.trim().isEmpty()) {
+		sql += " WHERE id LIKE ?";
+	}
+	sql += " ORDER BY score " + sortOrder.toUpperCase();
+
+	PreparedStatement ps = conn.prepareStatement(sql);
+	if (!searchId.trim().isEmpty()) {
+		ps.setString(1, "%" + searchId + "%");
+	}
+	ResultSet rs = ps.executeQuery();
 %>
 <html>
 <head>
@@ -31,13 +43,16 @@
 		<br>
 		<font size=6>회원 정보</font><br><br>
 
-		<!-- 정렬 선택 폼 -->
+		<!-- 검색 및 정렬 선택 폼 -->
 		<form method="get" action="">
+			아이디 검색:
+			<input type="text" name="search" value="<%= searchId %>" />
 			정렬 기준:
-			<select name="sort" onchange="this.form.submit()">
+			<select name="sort">
 				<option value="desc" <%= "desc".equals(sortOrder) ? "selected" : "" %>>점수 높은 순</option>
 				<option value="asc" <%= "asc".equals(sortOrder) ? "selected" : "" %>>점수 낮은 순</option>
 			</select>
+			<button type="submit">검색</button>
 		</form>
 		<br>
 
@@ -67,7 +82,7 @@
 		count++;	
 	}
 	rs.close();
-	sm.close();
+	ps.close();
 	conn.close();
 %>
 		</table>
