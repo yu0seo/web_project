@@ -33,7 +33,7 @@
 %>
                 <script>
                     alert("회원 삭제가 완료되었습니다.");
-<%response.sendRedirect("start_page.jsp");%>
+					<%response.sendRedirect("start_page.jsp");%>
                 </script>
 <%
             } else {

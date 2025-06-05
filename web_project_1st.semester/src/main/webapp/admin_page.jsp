@@ -33,6 +33,7 @@
 		<th>이메일</th>
 		<th>비밀번호 찾기 질문</th>
 		<th>점수</th>
+		<th>삭제</th>
 	<tr>
 <%
 	String str = "";
@@ -42,6 +43,13 @@
 		out.print("<tr>" + "<td>" + count + "<td>" + rs.getString("id") + "<td>" + rs.getString("name")
 		+ "<td>" + rs.getString("birthday") + "<td>" + rs.getString("email") + "<td>"
 		+ rs.getString("question") + "<td>" + rs.getString("score"));
+%>
+		<td>
+		<form action="admin_del_proc.jsp" method="post">
+			<button type="submit" name="del_id" value="<%= rs.getString("id") %>">삭제</button>
+		</form>
+	
+<%
 		count ++;	
 	}
 	out.print(str);
