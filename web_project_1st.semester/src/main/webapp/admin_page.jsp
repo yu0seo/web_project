@@ -15,7 +15,7 @@
 
 	Connection conn = null;
 	Class.forName(driverName);
-	conn = DriverManager.getConnection(url, username, password);
+	conn = DriverManager.getConnection(url, username, password); 
 
 	Statement sm = conn.createStatement();
 	String sql = "SELECT id, name, birthday, email, question, score FROM members ORDER BY score " + sortOrder.toUpperCase();
