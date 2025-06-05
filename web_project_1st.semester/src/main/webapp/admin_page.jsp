@@ -23,7 +23,7 @@
 <body>
 	<div align="center">
 	<br>
-	<font size=6>회원 정보</font><br>
+	<font size=6>회원 정보</font>test<br>
 	<table border="1" width="1000" cellspacing="0" cellpadding="3">
 	<tr>
 		<th>순서</th>
