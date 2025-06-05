@@ -19,7 +19,7 @@
 
 	Statement sm = conn.createStatement();
 	String sql = "SELECT id, name, birthday, email, question, score FROM members ORDER BY score " + sortOrder.toUpperCase();
-	ResultSet rs = sm.executeQuery(sql);
+	ResultSet rs = sm.executeQuery(sql); 
 %>
 <html>
 <head>
